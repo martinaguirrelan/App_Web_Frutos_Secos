@@ -1,82 +1,55 @@
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+.layout { display: flex; flex-direction: column; min-height: 100vh; }
 
-.main-content {
-  flex: 1;
-  padding: 2rem 1rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Header */
-.header {
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  padding: 1rem;
-}
-
-.header-container {
-  max-width: 1100px;
-  margin: 0 auto;
+/* ── Navbar ───────────────────────────────── */
+.navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
+.navbar-brand { font-size: 1.1rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+.navbar-brand span { color: var(--text); font-weight: 400; }
+.navbar-links { display: flex; gap: 0.25rem; align-items: center; flex-wrap: wrap; }
+.nav-link { padding: 0.4rem 0.85rem; border-radius: 0.5rem; color: var(--muted); font-size: 0.875rem; font-weight: 500; transition: background 0.15s, color 0.15s; }
+.nav-link:hover { background: var(--surface2); color: var(--text); }
+.nav-link.active { background: var(--surface2); color: var(--accent); }
+.nav-divider { width: 1px; height: 20px; background: var(--border); margin: 0 0.5rem; }
 
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-accent);
-}
+/* ── Footer ───────────────────────────────── */
+.footer { background: var(--surface); border-top: 1px solid var(--border); text-align: center; padding: 1rem; color: var(--muted); font-size: 0.8rem; margin-top: auto; }
 
-.nav {
-  display: flex;
-  gap: 1.5rem;
-}
+/* ── Product Card ─────────────────────────── */
+.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.product-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.product-card-img { width: 100%; height: 160px; object-fit: cover; background: var(--surface2); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 3rem; }
+.product-card-body { padding: 1rem; }
+.product-card-name { font-weight: 700; margin-bottom: 0.25rem; }
+.product-card-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem; }
+.product-card-price { color: var(--accent); font-weight: 700; font-size: 1rem; }
+.product-card-category { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
 
-/* Footer */
-.footer {
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  text-align: center;
-  padding: 1rem;
-  color: var(--color-muted);
-  font-size: 0.875rem;
-}
+/* ── Mixer ────────────────────────────────── */
+.mixer-layout { display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start; }
+@media (max-width: 900px) { .mixer-layout { grid-template-columns: 1fr; } }
+.mix-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: var(--surface2); border-radius: 0.5rem; margin-bottom: 0.5rem; }
+.mix-item-name { flex: 1; font-weight: 600; font-size: 0.9rem; }
+.mix-item-weight { width: 100px; }
+.mix-item-subtotal { font-size: 0.85rem; color: var(--accent); font-weight: 700; min-width: 70px; text-align: right; }
+.mix-summary { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; position: sticky; top: 76px; }
+.mix-total { font-size: 1.5rem; font-weight: 800; color: var(--accent); margin: 0.5rem 0 1rem; }
 
-/* Home */
-.home {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.home h1 {
-  font-size: 2rem;
-  font-weight: 800;
-}
-
-.home p {
-  color: var(--color-muted);
-}
-
-.status-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.status-card h2 {
-  font-size: 1.1rem;
-}
-
-.success { color: var(--color-success); }
-.error   { color: var(--color-error); }
+/* ── Inventory ────────────────────────────── */
+.stock-bar-wrap { display: flex; align-items: center; gap: 0.75rem; }
+.stock-bar-bg { flex: 1; height: 6px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
+.stock-bar-fill { height: 100%; border-radius: 99px; transition: width 0.4s; }
+.fill-ok { background: var(--success); }
+.fill-warning { background: var(--warning); }
+.fill-critical { background: var(--danger); }
